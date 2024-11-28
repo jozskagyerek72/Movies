@@ -14,6 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { Outlet, NavLink } from 'react-router-dom';
 import MovieIcon from '@mui/icons-material/Movie';
+import MovieFilterIcon from '@mui/icons-material/MovieFilter';
 
 const pages = [
     { path: "/", name: "Trending" },
@@ -43,7 +44,7 @@ export const Header = () => {
             <AppBar position="static" sx={{bgcolor:"#512da8"}}>
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>
-                        <MovieIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+                        <MovieFilterIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
                         {/**mobil nezet */}
 
                         <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -82,7 +83,7 @@ export const Header = () => {
                                 ))}
                             </Menu>
                         </Box>
-                        <MovieIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+                        <MovieFilterIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
                         {/**laptop menu */}
                         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                             {pages.map((item) => (

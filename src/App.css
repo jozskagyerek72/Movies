@@ -15,7 +15,10 @@
     gap: 5px;    
 }
 
-
+.img-container
+{
+    background-size: cover;
+}
 
 .carousel_container
 {

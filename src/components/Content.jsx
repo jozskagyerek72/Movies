@@ -21,7 +21,7 @@ export const Content = ({ url, type }) => {
 
   return (
     <>
-      <div className='container'>
+      <div className='container' style={{backgroundColor:"#311b92"}}>
         {data.results.map(obj =>
           <SingleContent key={obj.id} {...obj} type={type} />
         )}

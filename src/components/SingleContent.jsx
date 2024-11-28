@@ -15,10 +15,11 @@ export const SingleContent = ({ id, poster_path, title, name, media_type, type, 
 
   return (
     <div>
-      <Card sx={{ maxWidth: 250 }}>
+      <Card sx={{ maxWidth: 250 , bgcolor:"#5e35b1", color:"white"}}>
         <CardActionArea onClick={() => setOpen(true)}>
           <CardMedia
-            sx={{ height: 400, width: 250 }}
+            className='img-container'
+            sx={{ height: 300, width: 250 }}
             image={poster_path ? img_300 + poster_path : imgUnavailable}
             title={title || name}
           />
@@ -26,7 +27,7 @@ export const SingleContent = ({ id, poster_path, title, name, media_type, type, 
             <Typography gutterBottom variant="h5" component="div">
               {title || name}
             </Typography>
-            <Typography variant="body2" sx={{ color: 'text.secondary', display: "flex", justifyContent: "space-between" }}>
+            <Typography variant="body2" sx={{ color: 'whitesmoke', display: "flex", justifyContent: "space-between" }}>
               <span> {media_type} </span><span>{release_date || first_air_date}</span>
             </Typography>
             <span style={{
