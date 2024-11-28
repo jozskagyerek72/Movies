@@ -30,7 +30,8 @@ export const Content = ({ url, type, searchtext }) => {
       )}
     </div>
     <div>
-
+  
+  
       <ContentPagination page={page} setPage={setPage} numberOfPage={data.total_pages}/>
     </div>
     </>
