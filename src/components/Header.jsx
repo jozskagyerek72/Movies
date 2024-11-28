@@ -12,7 +12,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import { Outlet,NavLink } from 'react-router-dom';
+import { Outlet, NavLink } from 'react-router-dom';
 import MovieIcon from '@mui/icons-material/Movie';
 
 const pages = [
@@ -40,7 +40,7 @@ export const Header = () => {
 
     return (
         <>
-            <AppBar position="static">
+            <AppBar position="static" sx={{bgcolor:"#512da8"}}>
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>
                         <MovieIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -74,9 +74,11 @@ export const Header = () => {
                                 sx={{ display: { xs: 'block', md: 'none' } }}
                             >
                                 {pages.map((item) => (
-                                    <MenuItem key={item.name} onClick={handleCloseNavMenu}>
-                                        <Typography sx={{ textAlign: 'center' }}>{item.name}</Typography>
-                                    </MenuItem>
+                                    <NavLink key={item.name} to={item.path}>
+                                        <MenuItem key={item.name} onClick={handleCloseNavMenu}>
+                                            <Typography sx={{ textAlign: 'center' }}>{item.name}</Typography>
+                                        </MenuItem>
+                                    </NavLink>
                                 ))}
                             </Menu>
                         </Box>

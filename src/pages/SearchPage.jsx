@@ -57,7 +57,7 @@ export const SearchPage = () => {
             row
             defaultValue="movies"
             name="radio-buttons-group"
-            onChange={()=>handlechange(event)}
+            onChange={(event)=>handlechange(event)}
             
           >
               <FormControlLabel  value="movies" control={<Radio />} label="Movies" />
@@ -67,7 +67,7 @@ export const SearchPage = () => {
 
 
      
-    
+        
     </Box>
     <Content url={urlSearch/*+"&with_genres="+urlForGenres*/} type={tab}/>
     </div>
