@@ -14,7 +14,7 @@ export const ContentPagination = ({ page, setPage, numberOfPage = 10 }) => {
 
   return (
     
-      <Stack spacing={2} sx={{bgcolor:"#311b92"}}>
+      <Stack spacing={2} >
 
         <Pagination count={numberOfPage} variant="outlined" color="secondary" page={page} onChange={handleChage} />
 

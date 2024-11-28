@@ -20,57 +20,60 @@ import { Content } from '../components/Content';
 
 
 export const SearchPage = () => {
-  const  [tab,setTab] = useState("movie")
-  const [searchText, setsearchtext] = useState("")
-  const urlSearch = `https://api.themoviedb.org/3/search/${tab}?api_key=${import.meta.env.VITE_KEY}&include_adult=false&query=${searchText}&page=1`;
-  //const {isLoading,isError,error,data} = useQuery( { queryKey: ["trendings",urlSearch] , queryFn: getData} )
 
-  const handlechange = (e) =>
-    {
-      setTab(e.target.value)
-      console.log(e.target.value);
-      
-    }
+  const [searchtext, setsearchtext] = useState('');
+  const [query, setQuery] = useState('')
+  const [page, setPage] = useState(1)
+  const [type, setType] = useState('movie');
+  const [fetchData, setFetchData] = useState(false);
 
-  const search = () =>
-    {
-      console.log(data);
+  const urlSearch = searchtext
+    ? `https://api.themoviedb.org/3/search/${type}?&page=${page}&api_key=${import.meta.env.VITE_KEY}` : `https://api.themoviedb.org/3/${type}/popular?page=${page}&api_key=${import.meta.env.VITE_KEY}`;
 
-      
-    }
+
+  const handleClick = () => {
+    console.log(handleClick);
+    setFetchData(true)
+    setQuery(searchtext)
+
+
+  }
 
   return (
-    <div style={{marginLeft:"auto",marginRight:"auto"}}>
-         <Box
-            component="form"
-            sx={{ '& > :not(style)': { m: 1, width: '25ch' } }}
-            noValidate
-            autoComplete="off"
-          >
+    <>
+      <div className='searchbar'>
+        <div className='searchdiv'>
+          <div >
 
-          <Stack spacing={2} direction="row" >
-           <TextField id="outlined-basic" label="Search" variant="outlined" onChange={()=>console.log(event.target.value)
-           }/>
-           <Button variant="contained" onClick={search}><ManageSearchIcon/></Button>
-          </Stack>
-          <RadioGroup
-            row
-            defaultValue="movies"
-            name="radio-buttons-group"
-            onChange={(event)=>handlechange(event)}
-            
-          >
-              <FormControlLabel  value="movies" control={<Radio />} label="Movies" />
-              <FormControlLabel value="tv" control={<Radio />} label="Tv series" />
-              
-          </RadioGroup>
+            <TextField sx={{ height: 50, width: 250, margin: 1 }} id="filled-basic" label="Search movies/tv series" variant="filled"
+              onChange={(event) => setsearchtext(event.target.value)}
+              value={searchtext}
+            />
+            <Button sx={{ height: 55, width: 50, margin: 1 }} variant="contained" endIcon={<ManageSearchIcon sx={{ width: 30, height: 30, margin: 0, padding: 0 }} />}
+              onClick={handleClick}
+            >
+            </Button>
+          </div>
+          <div className='searchbuttons'>
+            <Button sx={{ height: 50, width: 150, margin: 1 }} variant="outlined"
+              onClick={() => setType('movie')}
 
+            >Movie</Button>
+            <Button sx={{ height: 50, width: 150, margin: 1 }} variant="outlined"
+              onClick={() => setType('tv')}
 
-     
-        
-    </Box>
-    <Content url={urlSearch/*+"&with_genres="+urlForGenres*/} type={tab}/>
-    </div>
+            >TV Series</Button>
+          </div>
+        </div>
+        {fetchData &&
+          <>
+            <div>
+              <Content url={urlSearch} searchtext={query} type={type} />
+            </div>
+
+          </>}
+      </div>
+    </>
   )
 }
 
